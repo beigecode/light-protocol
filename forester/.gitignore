@@ -1,0 +1,6 @@
+logs
+/target
+.idea
+.env
+*.json
+!package.json

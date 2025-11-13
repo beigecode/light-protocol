@@ -1,0 +1,43 @@
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - "*"
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - ready_for_review
+
+name: lint
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: lint
+    if: github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v4
+
+      - name: Setup and build
+        uses: ./.github/actions/setup-and-build
+        with:
+          skip-components: "proving-keys,redis,disk-cleanup,go"
+          cache-key: "lint"
+
+      - name: Run linters
+        run: |
+          set -euxo pipefail
+          rustup install nightly
+          rustup target add x86_64-unknown-linux-gnu --toolchain nightly
+          rustup component add --toolchain nightly rustfmt
+          rustup component add --toolchain nightly clippy
+          rustup component add --toolchain 1.86-x86_64-unknown-linux-gnu clippy
+          ./scripts/lint.sh

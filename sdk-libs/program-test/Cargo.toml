@@ -1,0 +1,66 @@
+[package]
+name = "light-program-test"
+version = "0.16.0"
+description = "A fast local test environment for Solana programs using compressed accounts and tokens."
+license = "MIT"
+edition = "2021"
+
+[features]
+default = []
+devenv = ["v2", "light-client/devenv", "light-prover-client/devenv", "dep:account-compression", "dep:light-compressed-token", "dep:light-compressed-token-sdk", "dep:light-ctoken-types", "dep:light-compressible", "dep:light-registry", "dep:light-batched-merkle-tree", "dep:light-concurrent-merkle-tree"]
+v2 = ["light-client/v2"]
+
+[dependencies]
+light-sdk = { workspace = true, features = ["anchor"] }
+light-indexed-merkle-tree = { workspace = true, features = ["solana"] }
+light-indexed-array = { workspace = true }
+light-merkle-tree-reference = { workspace = true }
+light-merkle-tree-metadata = { workspace = true, features = ["anchor"] }
+light-concurrent-merkle-tree = { workspace = true, optional = true }
+light-hasher = { workspace = true, features = ["poseidon", "sha256", "keccak", "std"] }
+light-ctoken-types = { workspace = true, optional = true }
+light-compressible = { workspace = true, optional = true }
+light-compressed-token-sdk = { workspace = true, optional = true }
+light-compressed-account = { workspace = true, features = ["anchor", "poseidon"] }
+light-batched-merkle-tree = { workspace = true, features = ["test-only"], optional = true }
+light-event = { workspace = true }
+# unreleased
+light-client = { workspace = true, features = ["program-test"] }
+light-prover-client = { workspace = true }
+light-zero-copy = { workspace = true }
+litesvm = { workspace = true }
+spl-token-2022 = { workspace = true }
+
+light-registry = { workspace = true, features = ["cpi"], optional = true }
+light-compressed-token = { workspace = true, features = ["cpi"], optional = true }
+account-compression = { workspace = true, features = ["cpi"], optional = true }
+photon-api = { workspace = true }
+
+log = { workspace = true }
+borsh = { workspace = true }
+tokio = { workspace = true }
+async-trait = { workspace = true }
+num-bigint = { workspace = true }
+num-traits = { workspace = true }
+reqwest = { workspace = true }
+anchor-lang = { workspace = true }
+
+solana-transaction = { workspace = true }
+solana-transaction-status-client-types = { workspace = true }
+solana-rpc-client-api = { workspace = true }
+solana-sdk = { workspace = true }
+solana-banks-client = { workspace = true }
+solana-pubkey = { workspace = true }
+solana-instruction = { workspace = true }
+solana-account = { workspace = true }
+solana-compute-budget = { workspace = true }
+rand = { workspace = true }
+bytemuck = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+solana-transaction-status = { workspace = true }
+bs58 = { workspace = true }
+light-sdk-types = { workspace = true }
+tabled = { workspace = true }
+chrono = "0.4"
+base64 = "0.22"
