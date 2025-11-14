@@ -8,12 +8,17 @@
   "exports": {
     ".": {
       "types": "./js/stateless.js/src/index.ts",
+      "import": "./js/stateless.js/src/index.ts",
+      "require": "./js/stateless.js/src/index.ts",
       "default": "./js/stateless.js/src/index.ts"
     },
     "./browser": {
       "types": "./js/stateless.js/src/index.ts",
+      "import": "./js/stateless.js/src/index.ts",
+      "require": "./js/stateless.js/src/index.ts",
       "default": "./js/stateless.js/src/index.ts"
-    }
+    },
+    "./*": "./js/stateless.js/src/*"
   },
   "files": [
     "js/stateless.js"
