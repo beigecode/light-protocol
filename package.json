@@ -2,19 +2,17 @@
   "name": "@lightprotocol/stateless.js",
   "version": "0.22.1-patched",
   "description": "Light Protocol Stateless.js SDK (patched fork)",
-  "main": "js/stateless.js/dist/cjs/node/index.cjs",
+  "main": "js/stateless.js/src/index.ts",
   "type": "module",
-  "types": "js/stateless.js/dist/types/index.d.ts",
+  "types": "js/stateless.js/src/index.ts",
   "exports": {
     ".": {
-      "require": "./js/stateless.js/dist/cjs/node/index.cjs",
-      "types": "./js/stateless.js/dist/types/index.d.ts",
-      "default": "./js/stateless.js/dist/cjs/node/index.cjs"
+      "types": "./js/stateless.js/src/index.ts",
+      "default": "./js/stateless.js/src/index.ts"
     },
     "./browser": {
-      "import": "./js/stateless.js/dist/es/browser/index.js",
-      "require": "./js/stateless.js/dist/cjs/browser/index.cjs",
-      "types": "./js/stateless.js/dist/types/index.d.ts"
+      "types": "./js/stateless.js/src/index.ts",
+      "default": "./js/stateless.js/src/index.ts"
     }
   },
   "files": [
