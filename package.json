@@ -2,13 +2,19 @@
   "name": "@lightprotocol/stateless.js",
   "version": "0.22.1-patched",
   "description": "Light Protocol Stateless.js SDK (patched fork)",
-  "main": "js/stateless.js/dist/index.js",
-  "types": "js/stateless.js/dist/index.d.ts",
+  "main": "js/stateless.js/dist/cjs/node/index.cjs",
+  "type": "module",
+  "types": "js/stateless.js/dist/types/index.d.ts",
   "exports": {
     ".": {
-      "import": "./js/stateless.js/dist/index.js",
-      "require": "./js/stateless.js/dist/index.cjs",
-      "types": "./js/stateless.js/dist/index.d.ts"
+      "require": "./js/stateless.js/dist/cjs/node/index.cjs",
+      "types": "./js/stateless.js/dist/types/index.d.ts",
+      "default": "./js/stateless.js/dist/cjs/node/index.cjs"
+    },
+    "./browser": {
+      "import": "./js/stateless.js/dist/es/browser/index.js",
+      "require": "./js/stateless.js/dist/cjs/browser/index.cjs",
+      "types": "./js/stateless.js/dist/types/index.d.ts"
     }
   },
   "files": [
@@ -18,5 +24,8 @@
     "type": "git",
     "url": "git+https://github.com/beigecode/light-protocol.git"
   },
-  "license": "MIT"
+  "license": "Apache-2.0",
+  "peerDependencies": {
+    "@solana/web3.js": ">=1.73.5"
+  }
 }
